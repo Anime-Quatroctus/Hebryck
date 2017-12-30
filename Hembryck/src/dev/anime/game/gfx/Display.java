@@ -1,7 +1,6 @@
 package dev.anime.game.gfx;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -17,7 +16,13 @@ public class Display {
 	private MouseManager mManager;
 	private KeyManager kManager;
 	
+	private String name;
+	private int width, height;
+	
 	public Display(String name, int width, int height) {
+		this.name = name;
+		this.width = width;
+		this.height = height;
 		this.createJFrame(name, width, height);
 	}
 	
@@ -33,7 +38,6 @@ public class Display {
 		frame.setVisible(true);
 		
 		canvas = new Canvas();
-		canvas.setBackground(Color.BLACK);
 		canvas.addMouseListener(mManager = new MouseManager());
 		canvas.addMouseMotionListener(mManager);
 		canvas.addMouseWheelListener(mManager);
@@ -61,6 +65,18 @@ public class Display {
 	
 	public MouseManager getMouse() {
 		return mManager;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public int getWidth() {
+		return width;
+	}
+	
+	public int getHeight() {
+		return height;
 	}
 	
 }
