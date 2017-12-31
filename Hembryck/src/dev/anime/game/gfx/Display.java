@@ -33,7 +33,6 @@ public class Display {
 		frame.setMinimumSize(dim);
 		frame.setMaximumSize(dim);
 		frame.setLocationRelativeTo(null);
-		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
@@ -77,6 +76,14 @@ public class Display {
 	
 	public int getHeight() {
 		return height;
+	}
+	
+	public float getXScale() {
+		return ((float) canvas.getWidth()) / ((float)this.width);
+	}
+	
+	public float getYScale() {
+		return ((float) canvas.getHeight()) / ((float)this.height);
 	}
 	
 }

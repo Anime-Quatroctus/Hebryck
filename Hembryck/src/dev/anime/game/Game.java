@@ -2,11 +2,11 @@ package dev.anime.game;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import dev.anime.game.gfx.Assets;
 import dev.anime.game.gfx.Display;
+import dev.anime.game.gfx.ScaledGraphics;
 import dev.anime.game.states.MainMenuState;
 import dev.anime.game.states.State;
 import dev.anime.game.states.StateManager;
@@ -83,7 +83,7 @@ public class Game implements Runnable {
 			display.getCanvas().createBufferStrategy(3);
 			return;
 		}
-		Graphics g = bs.getDrawGraphics();
+		ScaledGraphics g = new ScaledGraphics(bs.getDrawGraphics(), handler);
 		
 		g.clearRect(0, 0, display.getWidth(), display.getHeight());
 		g.setColor(Color.BLACK);
@@ -92,7 +92,7 @@ public class Game implements Runnable {
 		if (showDebugInfo) {
 			g.setFont(new Font("arial", 0, 40));
 			g.setColor(Utilities.getColorPercentage(updates, 30));
-			g.drawString(Integer.toString(updates), 0, 30);
+			g.drawString(Integer.toString(updates), 0, 0);
 		}
 		bs.show();
 		g.dispose();
@@ -100,6 +100,10 @@ public class Game implements Runnable {
 	
 	public void tick() {
 		StateManager.getCurrentState().tickState();
+	}
+	
+	public void switchDebug() {
+		showDebugInfo = !showDebugInfo;
 	}
 	
 	public Display getDisplay() {

@@ -1,10 +1,11 @@
 package dev.anime.game.states;
 
-import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
 import dev.anime.game.GameObjects;
+import dev.anime.game.Utilities.Tuple;
+import dev.anime.game.gfx.ScaledGraphics;
 import dev.anime.game.states.gui.Gui;
 
 public abstract class State {
@@ -19,8 +20,36 @@ public abstract class State {
 		this.handler = handler;
 	}
 	
-	public abstract void renderState(Graphics g);
+	public abstract void renderState(ScaledGraphics g);
 	
 	public abstract void tickState();
+	
+	private static final long TIME = (3000000000L / 4L);
+	private static final Tuple<Character, Long, Boolean> key = new Tuple<Character, Long, Boolean>();
+	
+	public void keyPressed(int keyCode, char keyChar) {
+		if (key.getKey() != null && key.getKey() == ((char) keyCode)) {
+			long lastTime = key.getValue1(), currentTime = System.nanoTime();
+			if (key.getValue2() == true) {
+				if (currentTime - lastTime >= TIME / 3) {
+					this.keyTyped(keyCode, keyChar);
+				}
+			} else if (currentTime - lastTime >= TIME) {
+				this.keyTyped(keyCode, keyChar);
+				key.put((char)keyCode, lastTime + TIME, true);
+			}
+		} else {
+			key.put((char) keyCode, System.nanoTime(), false);
+			this.keyTyped(keyCode, keyChar);
+		}
+	}
+	
+	public void keyReleased(int keyCode, char keyChar) {
+		key.put(null, null, null);
+	}
+	
+	public void keyTyped(int keyCode, char keyChar) {
+		if (keyChar == '`') handler.getGame().switchDebug();
+	}
 	
 }

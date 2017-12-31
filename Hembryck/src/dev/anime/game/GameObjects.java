@@ -43,4 +43,12 @@ public class GameObjects {
 		return game.getDisplay().getHeight();
 	}
 	
+	public float getXScale() {
+		return game.getDisplay().getXScale();
+	}
+
+	public float getYScale() {
+		return game.getDisplay().getYScale();
+	}
+	
 }
