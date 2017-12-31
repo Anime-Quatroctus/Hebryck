@@ -5,7 +5,11 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import dev.anime.game.gfx.Assets;
 import dev.anime.game.gfx.Display;
+import dev.anime.game.states.MainMenuState;
+import dev.anime.game.states.State;
+import dev.anime.game.states.StateManager;
 
 public class Game implements Runnable {
 	
@@ -25,6 +29,9 @@ public class Game implements Runnable {
 	public void init() {
 		display = new Display("Title", 620, 540);
 		handler = new GameObjects(this);
+		State.MAIN_MENU_STATE = new MainMenuState(this.handler);
+		StateManager.setCurrentState(State.MAIN_MENU_STATE);
+		Assets.init();
 	}
 	
 	public synchronized void start() {
@@ -81,7 +88,7 @@ public class Game implements Runnable {
 		g.clearRect(0, 0, display.getWidth(), display.getHeight());
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, display.getWidth(), display.getHeight());
-		// Main Render code
+		StateManager.getCurrentState().renderState(g);
 		if (showDebugInfo) {
 			g.setFont(new Font("arial", 0, 40));
 			g.setColor(Utilities.getColorPercentage(updates, 30));
@@ -92,7 +99,7 @@ public class Game implements Runnable {
 	}
 	
 	public void tick() {
-		
+		StateManager.getCurrentState().tickState();
 	}
 	
 	public Display getDisplay() {

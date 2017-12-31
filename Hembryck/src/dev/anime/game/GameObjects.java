@@ -35,6 +35,12 @@ public class GameObjects {
 		return game.getDisplay().getMouse();
 	}
 	
+	public int getWidth() {
+		return game.getDisplay().getWidth();
+	}
 	
+	public int getHeight() {
+		return game.getDisplay().getHeight();
+	}
 	
 }
