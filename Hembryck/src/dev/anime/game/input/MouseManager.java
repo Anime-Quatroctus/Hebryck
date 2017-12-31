@@ -8,45 +8,45 @@ import java.awt.event.MouseWheelListener;
 import javax.swing.event.MouseInputListener;
 
 public class MouseManager implements MouseInputListener, MouseMotionListener, MouseWheelListener {
-
+	
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
-
+	public void mouseClicked(MouseEvent event) {
+		
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-
+	public void mouseEntered(MouseEvent event) {
+		
 	}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-
+	public void mouseExited(MouseEvent event) {
+		
 	}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {
-
+	public void mousePressed(MouseEvent event) {
+		
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
-
+	public void mouseReleased(MouseEvent event) {
+		
 	}
 
 	@Override
-	public void mouseWheelMoved(MouseWheelEvent arg0) {
-
+	public void mouseWheelMoved(MouseWheelEvent event) {
+		
 	}
 
 	@Override
-	public void mouseDragged(MouseEvent arg0) {
-
+	public void mouseDragged(MouseEvent event) {
+		
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent arg0) {
-
+	public void mouseMoved(MouseEvent event) {
+		
 	}
 
 }

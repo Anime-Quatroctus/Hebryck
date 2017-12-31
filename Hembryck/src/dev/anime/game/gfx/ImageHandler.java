@@ -9,7 +9,6 @@ public class ImageHandler {
 	
 	public static BufferedImage loadImage(String path) {
 		try {
-			System.out.println(ImageHandler.class.getResource(path));
 			return ImageIO.read(ImageHandler.class.getResource(path));
 		} catch (IOException e) {
 			e.printStackTrace();

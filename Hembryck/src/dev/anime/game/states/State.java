@@ -1,11 +1,11 @@
 package dev.anime.game.states;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
 import dev.anime.game.GameObjects;
 import dev.anime.game.Utilities.Tuple;
-import dev.anime.game.gfx.ScaledGraphics;
 import dev.anime.game.states.gui.Gui;
 
 public abstract class State {
@@ -20,7 +20,7 @@ public abstract class State {
 		this.handler = handler;
 	}
 	
-	public abstract void renderState(ScaledGraphics g);
+	public abstract void renderState(Graphics g);
 	
 	public abstract void tickState();
 	
