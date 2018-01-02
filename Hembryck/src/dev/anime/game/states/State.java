@@ -55,11 +55,11 @@ public abstract class State {
 	public void mouseClicked(int button, int x, int y) { }
 	
 	public void mouseEntered(int button, int x, int y) {
-//		handler.getGame().setPaused(false);
+		handler.getGame().setPaused(false);
 	}
 	
 	public void mouseExited(int button, int x, int y) {
-//		handler.getGame().setPaused(true);
+		handler.getGame().setPaused(true);
 	}
 	
 	public void mousePressed(int button, int x, int y) { }

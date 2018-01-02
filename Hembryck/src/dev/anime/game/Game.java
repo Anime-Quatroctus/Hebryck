@@ -59,15 +59,14 @@ public class Game implements Runnable {
 		long currentTime, timePassed = 0;
 		while (running) {
 			currentTime = System.nanoTime();
-			if (paused) return;
-			timeBetweenLastTick += ((currentTime - lastTime) / 1000000000D);
+			if (!paused) timeBetweenLastTick += ((currentTime - lastTime) / 1000000000D);
 			if (timeBetweenLastTick >= timePerUpdate) {
 				this.tick();
 				this.render();
 				timeBetweenLastTick -= timePerUpdate;
 				updates++;
 			}
-			timePassed += currentTime - lastTime;
+			if (!paused) timePassed += currentTime - lastTime;
 			if (timePassed > 1000000000) {
 				this.updates = updates;
 				System.out.println(updates);
