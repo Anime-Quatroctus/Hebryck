@@ -14,7 +14,7 @@ import dev.anime.game.states.StateManager;
 public class Game implements Runnable {
 	
 	private int updates;
-	private boolean running = false, showDebugInfo = false;
+	private boolean running = false, showDebugInfo = false, paused = false;
 	private Thread thread;
 	
 	private Display display;
@@ -59,6 +59,7 @@ public class Game implements Runnable {
 		long currentTime, timePassed = 0;
 		while (running) {
 			currentTime = System.nanoTime();
+			if (paused) return;
 			timeBetweenLastTick += ((currentTime - lastTime) / 1000000000D);
 			if (timeBetweenLastTick >= timePerUpdate) {
 				this.tick();
@@ -69,6 +70,7 @@ public class Game implements Runnable {
 			timePassed += currentTime - lastTime;
 			if (timePassed > 1000000000) {
 				this.updates = updates;
+				System.out.println(updates);
 				updates = 0;
 				timePassed -= 1000000000;
 			}
@@ -100,6 +102,10 @@ public class Game implements Runnable {
 	
 	public void tick() {
 		StateManager.getCurrentState().tickState();
+	}
+	
+	public void setPaused(boolean paused) {
+		this.paused = paused;
 	}
 	
 	public void switchDebug() {

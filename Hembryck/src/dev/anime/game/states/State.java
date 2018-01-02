@@ -52,4 +52,24 @@ public abstract class State {
 		if (keyChar == '`') handler.getGame().switchDebug();
 	}
 	
+	public void mouseClicked(int button, int x, int y) { }
+	
+	public void mouseEntered(int button, int x, int y) {
+//		handler.getGame().setPaused(false);
+	}
+	
+	public void mouseExited(int button, int x, int y) {
+//		handler.getGame().setPaused(true);
+	}
+	
+	public void mousePressed(int button, int x, int y) { }
+	
+	public void mouseReleased(int button, int x, int y) { }
+	
+	public void mouseDragged(int button, int x, int y) { }
+	
+	public void mouseMoved(int button, int x, int y) { }
+	
+	public void mouseWheelMoved(int count, int x, int y) { }
+	
 }
