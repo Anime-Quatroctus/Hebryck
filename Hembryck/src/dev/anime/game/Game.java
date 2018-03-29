@@ -81,7 +81,7 @@ public class Game implements Runnable {
 	public void render() {
 		bs = display.getCanvas().getBufferStrategy();
 		if (bs == null) {
-			display.getCanvas().createBufferStrategy(3);
+			display.getCanvas().createBufferStrategy(2);
 			return;
 		}
 		ScaledGraphics g = new ScaledGraphics(bs.getDrawGraphics(), handler);

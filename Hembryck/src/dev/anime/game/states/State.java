@@ -45,7 +45,7 @@ public abstract class State {
 	}
 	
 	public void keyReleased(int keyCode, char keyChar) {
-		key.put(null, null, null);
+		if (key.getKey() == keyChar) key.put(null, null, null);
 	}
 	
 	public void keyTyped(int keyCode, char keyChar) {
